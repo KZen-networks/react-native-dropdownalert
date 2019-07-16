@@ -502,6 +502,9 @@ export default class DropdownAlert extends Component {
     if (payload && payload.hasOwnProperty('source') && payload.source && typeof payload.source !== 'object') {
       imageSrc = payload.source;
     }
+    if (payload && payload.hasOwnProperty('containerStyle') && payload.source && typeof payload.source !== 'object') {
+      style = payload.containerStyle;
+    }
     if (IS_ANDROID && translucent) {
       style = [style, { paddingTop: StatusBar.currentHeight }];
     }
