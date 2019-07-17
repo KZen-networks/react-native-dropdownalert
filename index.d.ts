@@ -25,6 +25,7 @@ export interface DropdownAlertProps {
     messageNumOfLines?: number
     onClose?(data: AlertDataType): void
     onCancel?(data: AlertDataType): void
+    onTap?(): void
     showCancel?: boolean
     tapToCloseEnabled?: boolean
     panResponderEnabled?: boolean
@@ -54,7 +55,6 @@ export interface DropdownAlertProps {
     accessibilityLabel?: string
     titleTextProps?: object
     messageTextProps?: object
-    onTap?(): void
   }
   export type DropdownAlertType =
     | 'info'
