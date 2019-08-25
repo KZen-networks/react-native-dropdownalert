@@ -70,6 +70,7 @@ export default class DropdownAlert extends Component {
     messageTextProps: PropTypes.object,
     useAnimationLock: PropTypes.bool,
     onTap: PropTypes.func,
+    closeToValue: PropTypes.number
   };
   static defaultProps = {
     onClose: () => {},
@@ -159,6 +160,7 @@ export default class DropdownAlert extends Component {
     messageTextProps: undefined,
     useAnimationLock: true,
     onTap: () => {},
+    closeToValue: 0,
   };
   constructor(props) {
     super(props);
@@ -297,7 +299,9 @@ export default class DropdownAlert extends Component {
     }, duration);
   };
   close = (action, onDone = () => {}) => {
-    this.animate(0, 250, () => {
+    const { closeToValue } = this.props;
+
+    this.animate(closeToValue, 250, () => {
       const { onClose, updateStatusBar, onCancel, onTap } = this.props;
       this.updateStatusBar(updateStatusBar, false);
       this.alertData.action = action;
@@ -309,7 +313,7 @@ export default class DropdownAlert extends Component {
         }
         onClose(this.alertData);
       }
-      this.setState({ isOpen: false, topValue: 0, height: 0 });
+      this.setState({ isOpen: false, topValue: closeToValue, height: 0 });
       this.animationLock = false;
       onDone();
     });
