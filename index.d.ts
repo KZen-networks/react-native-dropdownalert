@@ -56,6 +56,7 @@ export interface DropdownAlertProps {
     titleTextProps?: object
     messageTextProps?: object
     closeToValue?: number
+    windowHeight?: number
   }
   export type DropdownAlertType =
     | 'info'
