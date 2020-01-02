@@ -70,7 +70,8 @@ export default class DropdownAlert extends Component {
     messageTextProps: PropTypes.object,
     useAnimationLock: PropTypes.bool,
     onTap: PropTypes.func,
-    closeToValue: PropTypes.number
+    closeToValue: PropTypes.number,
+    windowHeight: PropTypes.number
   };
   static defaultProps = {
     onClose: () => {},
@@ -161,6 +162,7 @@ export default class DropdownAlert extends Component {
     useAnimationLock: true,
     onTap: () => {},
     closeToValue: 0,
+    windowHeight: HEIGHT
   };
   constructor(props) {
     super(props);
@@ -362,7 +364,7 @@ export default class DropdownAlert extends Component {
     }).start(onComplete);
   };
   getStartDelta = (height, start) => {
-    const windowHeight = HEIGHT;
+    const { windowHeight } = this.props;
     const startMin = 0 - height;
     const startMax = windowHeight + height;
     if (start < 0 && start != startMin) {
@@ -373,7 +375,7 @@ export default class DropdownAlert extends Component {
     return start;
   };
   getEndDelta = (height, end) => {
-    const windowHeight = HEIGHT;
+    const { windowHeight } = this.props;
     const endMin = 0;
     const endMax = windowHeight;
     if (end < endMin) {
